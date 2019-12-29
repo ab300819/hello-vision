@@ -33,8 +33,15 @@ find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
 include_directories(${OpenCV_INCLUDE_DIRS})
 
-add_executable(main source/main.cpp)
-target_link_libraries(main ${OpenCV_LIBS})
+add_executable(opencv source/opencv/opencv.cpp)
+target_link_libraries(opencv ${OpenCV_LIBS})
 
-add_executable(helloworld source/main_ui.cpp)
-target_link_libraries(helloworld Qt5::Widgets)
+add_executable(vtk source/vtk/vtk.cpp)
+target_link_libraries(vtk ${VTK_LIBRARIES})
+
+add_executable(main
+        source/main.cpp
+        source/widget/widget.cpp
+        source/widget/widget.h
+        source/widget/widget.ui)
+target_link_libraries(main Qt5::Widgets)
